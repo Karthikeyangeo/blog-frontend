@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import TopBar from "./components/topBar/TopBar";
+import Home from "./routes/home/Home";
+import Single from "./routes/single/Single";
+import Write from "./routes/write/Write";
+import Settings from "./routes/settings/Settings";
+import Login from "./routes/login/Login";
+import Register from "./routes/register/Register";
+import {Switch, Route,Redirect } from 'react-router-dom';
 
 function App() {
+  const user = false;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopBar />
+      <Switch>
+      {/* Each route is case, eg. - case '/about': */}
+  
+        <Route exact path='/'>
+          <Home />
+        </Route>
+
+        <Route path='/register'>
+          {user ? <Redirect to= '/' /> : <Register />}
+        </Route>
+
+        <Route path='/login'>
+          {user ? <Redirect to= '/' /> :<Login />}
+        </Route>
+        <Route path='/write'>
+          {user ? <Write /> : <Redirect to= '/login'/>}
+          
+        </Route>
+        <Route path='/settings'>
+          {user ? <Settings /> : <Redirect to= '/login'/>}
+        </Route>
+
+        <Route path='/post/:postID'>
+          <Single />
+        </Route>
+      </Switch>
+      
     </div>
   );
 }
