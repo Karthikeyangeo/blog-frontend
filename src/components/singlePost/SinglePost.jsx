@@ -2,8 +2,10 @@ import { useEffect ,useState} from 'react';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 import {API} from '../../globalData'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 import './singlePost.css'
 export default function SinglePost() {
+    const linkStyle = {textDecoration:'none',color:'inherit'};
     const location = useLocation();
     const path = location.pathname.split('/')[2]    //getting path after splitting and fetching only the final path (id)
     const [post,setPost] = useState({});
@@ -36,8 +38,14 @@ export default function SinglePost() {
                 </div>
             </h1>
             <div className="singlePostInfo">
-                <span className='singlePostAuthor'>Author : <b>{post.username}</b></span>
+                <span className='singlePostAuthor'>
+                    Author :
+                    <Link to={`/?user=${post.username}`} style={linkStyle}>
+                    <b>{post.username}</b>
+                    </Link>
+                </span>
                 <span className='singlePostDate'>{timeStamp}</span> 
+                
             </div>
             <p className='singlePostDesc'>
                 {post.desc}

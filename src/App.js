@@ -8,7 +8,7 @@ import Register from "./routes/register/Register";
 import {Switch, Route,Redirect } from 'react-router-dom';
 
 function App() {
-  const user = false;
+  const user = true;
   return (
     <div className="App">
       <TopBar />
