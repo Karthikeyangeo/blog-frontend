@@ -11,7 +11,7 @@ export default function Register() {
             <label >Email</label>
             <input className='loginInput' type="email" placeholder='Enter your email' />
             <label >Password</label>
-            <input className='loginInput'type="password" placeholder='Enter your password' />
+            <input className='loginInput'type="password" placeholder='Enter your password'autoComplete='on' />
             <button className="loginButton">LogIn</button>
         </form>
         <button className="loginRegisterButton">
