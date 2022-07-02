@@ -8,8 +8,8 @@ export default function Register() {
     <div className='login'>
         <span className="loginTitle">LogIn</span>
         <form  className="loginForm">
-            <label >Email</label>
-            <input className='loginInput' type="email" placeholder='Enter your email' />
+            <label >Username</label>
+            <input className='loginInput' type="text" placeholder='Enter your username' />
             <label >Password</label>
             <input className='loginInput'type="password" placeholder='Enter your password'autoComplete='on' />
             <button className="loginButton">LogIn</button>
