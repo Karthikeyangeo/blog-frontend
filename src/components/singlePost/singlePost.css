@@ -5,7 +5,8 @@
 .singlePostWrapper{
     padding: 20px;
     padding-right: 0px;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .singlePostImg{
@@ -21,7 +22,18 @@
     font-family: 'Lora', serif;
     font-size: 28px;
 }
-
+.singlePostTitleInput{
+    text-align: center;
+    margin: 10px;
+    font-family: 'Lora', serif;
+    font-size: 28px;
+}
+.singlePostTitleInput:focus{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    color:grey;
+}
 .singlePostEdit{
     float: right;
     font-size: 16px;
@@ -57,4 +69,28 @@
     margin-left: 20px;
     font-size: 30px;
     font-weight: 600;
+}
+
+.singlePostDescInput{
+    border:none;
+    color:#666;
+    font-size: 18px;
+    line-height: 25px;
+
+}
+
+.singlePostDescInput:focus{
+    outline: none;
+}
+
+.singlePostButton{
+    margin-top: 18px;
+    width: 100px;
+    border: none;
+    background-color: teal;
+    padding: 5px;
+    color:white;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
 }

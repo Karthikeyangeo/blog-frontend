@@ -11,7 +11,7 @@ export default function Sidebar() {
     const getCats = async()=>{
       const res = await axios.get(`${API}/categories`);
       setCats(res.data);
-      console.log(res.data)
+      // console.log(res.data)
     }
     getCats();
   },[])

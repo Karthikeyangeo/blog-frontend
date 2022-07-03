@@ -6,12 +6,14 @@ export default function Post({post}) {
     let createdDate = new Date(createdAt).toDateString();  //changing date to string
     const linkStyle = {textDecoration:'none',color:'inherit'};
 
+    const PF = `http://localhost:5000/images/`
+
   return (
     <div className='post'>
         {photo && (
         <img 
             className='postImg'
-            src={photo} 
+            src={PF+ photo} 
             alt="Blog Post Images" 
         />
         )}
