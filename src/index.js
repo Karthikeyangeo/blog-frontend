@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom';
-import { ContextProvider } from './context/Context';
+import {ContextProvider} from './context/Context.js'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ContextProvider>
-      <Router>
+    <Router>
+      <ContextProvider>
         <App />
-      </Router>
-    </ContextProvider>
+      </ContextProvider>
+    </Router>
     
     
   </React.StrictMode>

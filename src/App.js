@@ -6,9 +6,11 @@ import Settings from "./routes/settings/Settings";
 import Login from "./routes/login/Login";
 import Register from "./routes/register/Register";
 import {Switch, Route,Redirect } from 'react-router-dom';
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 function App() {
-  const user = false;
+  const {user}= useContext(Context);
   return (
     <div className="App">
       <TopBar />
