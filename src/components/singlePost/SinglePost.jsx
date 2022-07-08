@@ -13,7 +13,8 @@ export default function SinglePost() {
     const [post,setPost] = useState({});
     const timeStamp = new Date(post.createdAt).toDateString();
     const {user}= useContext(Context);
-    const PF = `http://localhost:5000/images/`;
+    // const PF = `http://localhost:5000/images/`;
+    const PF = `https://mkk-blog.herokuapp.com/images/`;
     const [title,setTitle] = useState('');
     const [desc,setDesc]= useState('');
     const[updateMode,setUpdateMode] = useState(false);
@@ -59,7 +60,7 @@ export default function SinglePost() {
             {post.photo && (
                 <img 
                 src={PF+post.photo} 
-                alt="Single Post Images" 
+                alt={`${title} post images`}
                 className="singlePostImg" 
             />
             )}{

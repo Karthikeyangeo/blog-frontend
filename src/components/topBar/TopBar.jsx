@@ -6,7 +6,8 @@ import { Context } from "../../context/Context";
 
 export default function TopBar() {
     const {user,dispatch}= useContext(Context) ;
-    const PF = 'http://localhost:5000/images/';
+    // const PF = 'http://localhost:5000/images/';
+    const PF = `https://mkk-blog.herokuapp.com/images/`;
     const linkStyle = {textDecoration:'none',color:'inherit'};
     const handleLogout =()=>{
         dispatch({type:'LOGOUT'})
@@ -24,12 +25,12 @@ export default function TopBar() {
                 <li className="topListItem">
                     <Link to='/' style={linkStyle}>HOME</Link>
                 </li>
-                <li className="topListItem">
+                {/* <li className="topListItem">
                     <Link to='/about' style={linkStyle}> ABOUT </Link>
                 </li>
                 <li className="topListItem">
                     <Link to='/contact' style={linkStyle}> CONTACT </Link>
-                </li>
+                </li> */}
                 <li className="topListItem">
                     <Link to='/write' style={linkStyle}> WRITE </Link>
                 </li>
@@ -61,7 +62,7 @@ export default function TopBar() {
                         </li>
                     </ul>
                 )}
-                <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+                {/* <i className="topSearchIcon fa-solid fa-magnifying-glass"></i> */}
  
         </div>
     </div>

@@ -9,7 +9,8 @@ import { API } from '../../globalData';
 
 export default function Settings() {
     const {user,dispatch} = useContext(Context);
-    const PF = 'http://localhost:5000/images/';
+    // const PF = 'http://localhost:5000/images/';
+    const PF = `https://mkk-blog.herokuapp.com/images/`;
     const[file,setFile]=useState(null)
     const [username,setUsername]= useState(null);
     const [email,setEmail]= useState(null);
