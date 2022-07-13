@@ -6,8 +6,8 @@ export default function Post({post}) {
     let createdDate = new Date(createdAt).toDateString();  //changing date to string
     const linkStyle = {textDecoration:'none',color:'inherit'};
 
-    // const PF = `http://localhost:5000/images/`
-    const PF = `https://mkk-blog.herokuapp.com/images/`;
+    const PF = `http://localhost:5000/images/`
+    // const PF = `https://mkk-blog.herokuapp.com/images/`;
 
   return (
     <div className='post'>
