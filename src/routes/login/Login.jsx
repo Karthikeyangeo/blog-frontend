@@ -1,33 +1,68 @@
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+// import { useRef } from 'react';
 import './login.css'
-import { useContext } from 'react';
+import { useContext,useState } from 'react';
 import { Context } from '../../context/Context';
 import {API} from '../../globalData'
 import axios from 'axios';
+import { useEffect } from 'react';
 
 
 
 export default function Login() {
   const linkStyle = {textDecoration:'none',color:'inherit'};
 
-  const userRef = useRef();
-  const passRef = useRef();
+  // const userRef = useRef();
+  // const passRef = useRef();
   const {dispatch,isFetching} =useContext(Context);
+  const [submit,setSubmit] = useState(false);
+  const [username,setUsername]=useState('');
+  const[pwd,setPwd]=useState('')
 
+  const handleUsername =(e)=>{
+    setUsername(e.target.value)
+  }
+  const handlePwd =(e)=>{
+    setPwd(e.target.value)
+  }
   const handleSubmit =async(e)=>{
     e.preventDefault();
+    setSubmit(true);
+    
+  }
+  useEffect(()=>{
+    if(submit){
     dispatch({type:"LOGIN_START"});
     try {
-      const res = await axios.post(`${API}/auth/login`,{
-        username:userRef.current.value,
-        password:passRef.current.value
+      var data = JSON.stringify({
+        "username": "mk",
+        "password": "Pass@1"
+      });
+      console.log(data)
+      var config = {
+        method: 'post',
+        url: `${API}/auth/login`,
+        headers: { 
+          // 'Content-Type': 'application/json'
+        },
+        data :{
+          username:username,
+          password:pwd
+        }
+      };
+      
+      axios(config)
+      .then(function (response) {
+        dispatch({type:"LOGIN_SUCCESS",payload:response.data});
       })
-      dispatch({type:"LOGIN_SUCCESS",payload:res.data});
+      .catch(function (error) {
+        console.log(error);
+      });
+      
     } catch (err) {
       dispatch({type:"LOGIN_FAILURE"})
-    }
-  }
+    }}
+  },[submit])
 
   return (
     <div className='login'>
@@ -38,7 +73,8 @@ export default function Login() {
               className='loginInput' 
               type="text" 
               placeholder='Enter your username' 
-              ref={userRef}
+              onChange={handleUsername}
+              // ref={userRef}
             />
             <label >Password</label>
             <input 
@@ -46,7 +82,8 @@ export default function Login() {
               type="password" 
               placeholder='Enter your password'
               autoComplete='on' 
-              ref={passRef}
+              onChange={handlePwd}
+              // ref={passRef}
             />
             <button className="loginButton" type='submit' disabled={isFetching}>LogIn</button>
         </form>

@@ -3,13 +3,14 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 import {Context} from '../../context/Context';
 import {API} from '../../globalData'
+import { useHistory } from 'react-router-dom';
 
 export default function Write() {
     const [title,setTitle] = useState("");
     const [desc,setDesc] = useState("");
     const [file,setFile]=useState(null);
     const {user}= useContext(Context);
-
+    const history = useHistory();
     const handleSubmit= async(e)=>{
         e.preventDefault();
         const newPost={
@@ -23,15 +24,18 @@ export default function Write() {
             data.append('name',filename);
             data.append('file',file);
             newPost.photo = filename;
+            // console.log(data)
             try {
-                await axios.post(`${API}/upload`,data)
+                const res = await axios.post(`${API}/upload`,data)
+                // console.log(res)
             } catch (err) {
                 console.log(err)
             }
         }
         try {
             const res = axios.post(`${API}/posts`,newPost);
-            window.location.replace(`${API}/post/` + res.data._id);
+            history.push(`/`)
+            // window.location.replace(`${API}/post/` + res.data._id);
         } catch (err) {
             
         }
@@ -48,7 +52,7 @@ export default function Write() {
         )}
         <form className='writeForm' onSubmit={handleSubmit}>
             <div className="writeFormGroup">
-                <label htmlFor="fileInput">
+                {/* <label htmlFor="fileInput">
                     <i className=" writeIcon fa-solid fa-plus"></i>
                 </label>
                 <input 
@@ -56,7 +60,7 @@ export default function Write() {
                     id='fileInput' 
                     style={{display:'none'}} 
                     onChange={(e)=>setFile(e.target.files[0])}
-                />
+                /> */}
 
                 <input 
                     type="text" 
